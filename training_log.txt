@@ -1,0 +1,324 @@
+2026-11-20 10:47:31.231884: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-11-20 10:47:31.231930: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-11-20 10:47:31.296844: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+Python 3.11.18 | TensorFlow 2.15.1 | Keras 2.15.0
+Repo root : /mnt/c/Ruhaan model train/Git folderr/reform
+GPU       : ['/physical_device:GPU:0']  compute capability: (12, 0)
+CPU cores : 16 | RAM: 8 GB
+Batch size: 64 | mixed precision: True | cache: auto
+Mode      : REAL RUN (replaces models/)
+
+======================================================================
+STAGE 0 DATASET CHECK: data/stage0
+======================================================================
+Class                |    Train |      Val |     Test |    Total
+----------------------------------------------------------------
+PCB                  |      700 |      166 |      124 |      990
+battery              |      744 |      169 |      125 |     1038
+glass_screen         |      601 |      138 |      101 |      840
+metal                |      637 |      162 |      121 |      920
+plastic              |     4860 |     1264 |      865 |     6989
+unknown              |     1399 |      382 |      216 |     1997
+----------------------------------------------------------------
+TOTAL                |     8941 |     2281 |     1552 |    12774
+
+======================================================================
+STAGE 1 DATASET CHECK: data/stage1
+======================================================================
+Class                |    Train |      Val |     Test |    Total
+----------------------------------------------------------------
+keyboard             |      696 |      190 |      123 |     1009
+mouse                |      691 |      157 |      116 |      964
+other_plastic        |     1517 |      460 |      250 |     2227
+printer_casing       |      700 |      170 |      130 |     1000
+remote               |      237 |       50 |       52 |      339
+tv_panel             |      669 |      162 |      119 |      950
+unknown              |     2555 |      690 |      359 |     3604
+----------------------------------------------------------------
+TOTAL                |     7065 |     1879 |     1149 |    10093
+
+======================================================================
+CHECK DATA SUMMARY
+======================================================================
+
+WARNINGS (1):
+  [WARN] Class imbalance >= 10:1 (unknown=2555 vs remote=237), acceptable for background/collector classes.
+
+Result: 0 error(s), 1 warning(s).
+ 
+Backed up 7 files from models/ to /mnt/c/Ruhaan model train/Git folderr/reform/models_backup/20261120_104925
+
+========================================================================
+STAGE 0  (/mnt/c/Ruhaan model train/Git folderr/reform/data/stage0)
+========================================================================
+Found 8941 files belonging to 6 classes.
+Found 2281 files belonging to 6 classes.
+Found 1552 files belonging to 6 classes.
+WARNING:tensorflow:`input_shape` is undefined or non-square, or `rows` is not in [96, 128, 160, 192, 224]. Weights for input shape (224, 224) will be loaded as the default.
+Classes (6): ['PCB', 'battery', 'glass_screen', 'metal', 'plastic', 'unknown']
+Images: train=8941 val=2281 test=1552 | train per class: {'plastic': 4860, 'unknown': 1399, 'battery': 744, 'PCB': 700, 'glass_screen': 601, 'metal': 637}
+Class weights: {'PCB': 2.13, 'battery': 2.0, 'glass_screen': 2.48, 'metal': 2.34, 'plastic': 0.31, 'unknown': 1.07}
+Cache mode: train=memory val=memory test=memory
+Saved an augmentation preview: /mnt/c/Ruhaan model train/Git folderr/reform/models/aug_preview_stage0.jpg  (look at it once)
+
+[PHASE 1] top layer, up to 15 epoch(s)
+Epoch 1/15
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795171796.948101    4667 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+140/140 - 18s - loss: 2.1775 - accuracy: 0.1786 - val_loss: 1.5901 - val_accuracy: 0.3270 - lr: 0.0010 - 18s/epoch - 127ms/step
+Epoch 2/15
+140/140 - 28s - loss: 1.9830 - accuracy: 0.1854 - val_loss: 1.6706 - val_accuracy: 0.2793 - lr: 0.0010 - 28s/epoch - 204ms/step
+Epoch 3/15
+
+Epoch 3: ReduceLROnPlateau reducing learning rate to 0.0005000000237487257.
+140/140 - 10s - loss: 1.9222 - accuracy: 0.1907 - val_loss: 1.5986 - val_accuracy: 0.3363 - lr: 0.0010 - 10s/epoch - 72ms/step
+Epoch 4/15
+140/140 - 17s - loss: 1.8557 - accuracy: 0.2087 - val_loss: 1.5527 - val_accuracy: 0.3840 - lr: 5.0000e-04 - 17s/epoch - 124ms/step
+Epoch 5/15
+140/140 - 12s - loss: 1.8192 - accuracy: 0.2118 - val_loss: 1.5877 - val_accuracy: 0.3516 - lr: 5.0000e-04 - 12s/epoch - 82ms/step
+Epoch 6/15
+
+Epoch 6: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+140/140 - 18s - loss: 1.7891 - accuracy: 0.2170 - val_loss: 1.6069 - val_accuracy: 0.3345 - lr: 5.0000e-04 - 18s/epoch - 126ms/step
+Epoch 7/15
+140/140 - 17s - loss: 1.7711 - accuracy: 0.2112 - val_loss: 1.5940 - val_accuracy: 0.3498 - lr: 2.5000e-04 - 17s/epoch - 124ms/step
+Epoch 8/15
+Restoring model weights from the end of the best epoch: 4.
+
+Epoch 8: ReduceLROnPlateau reducing learning rate to 0.0001250000059371814.
+140/140 - 12s - loss: 1.7617 - accuracy: 0.2180 - val_loss: 1.5597 - val_accuracy: 0.3819 - lr: 2.5000e-04 - 12s/epoch - 83ms/step
+Epoch 8: early stopping
+
+[PHASE 2] fine-tune last 30 layers, up to 10 epoch(s)
+Epoch 1/10
+140/140 - 20s - loss: 1.8526 - accuracy: 0.2024 - val_loss: 1.5388 - val_accuracy: 0.3924 - lr: 1.0000e-05 - 20s/epoch - 140ms/step
+Epoch 2/10
+140/140 - 9s - loss: 1.8454 - accuracy: 0.2012 - val_loss: 1.5361 - val_accuracy: 0.3937 - lr: 1.0000e-05 - 9s/epoch - 66ms/step
+Epoch 3/10
+140/140 - 9s - loss: 1.8255 - accuracy: 0.1964 - val_loss: 1.5042 - val_accuracy: 0.4134 - lr: 1.0000e-05 - 9s/epoch - 67ms/step
+Epoch 4/10
+140/140 - 9s - loss: 1.7993 - accuracy: 0.2088 - val_loss: 1.5058 - val_accuracy: 0.4060 - lr: 1.0000e-05 - 9s/epoch - 66ms/step
+Epoch 5/10
+140/140 - 9s - loss: 1.7673 - accuracy: 0.2194 - val_loss: 1.4927 - val_accuracy: 0.4152 - lr: 1.0000e-05 - 9s/epoch - 67ms/step
+Epoch 6/10
+140/140 - 9s - loss: 1.7669 - accuracy: 0.2182 - val_loss: 1.4667 - val_accuracy: 0.4305 - lr: 1.0000e-05 - 9s/epoch - 67ms/step
+Epoch 7/10
+140/140 - 9s - loss: 1.7556 - accuracy: 0.2176 - val_loss: 1.4523 - val_accuracy: 0.4419 - lr: 1.0000e-05 - 9s/epoch - 67ms/step
+Epoch 8/10
+140/140 - 9s - loss: 1.7387 - accuracy: 0.2289 - val_loss: 1.4673 - val_accuracy: 0.4301 - lr: 1.0000e-05 - 9s/epoch - 66ms/step
+Epoch 9/10
+
+Epoch 9: ReduceLROnPlateau reducing learning rate to 4.999999873689376e-06.
+140/140 - 18s - loss: 1.7295 - accuracy: 0.2288 - val_loss: 1.4679 - val_accuracy: 0.4288 - lr: 1.0000e-05 - 18s/epoch - 131ms/step
+Epoch 10/10
+140/140 - 9s - loss: 1.7033 - accuracy: 0.2316 - val_loss: 1.4750 - val_accuracy: 0.4231 - lr: 5.0000e-06 - 9s/epoch - 67ms/step
+
+[VALIDATION] accuracy 42.31%  loss 1.4750
+Saved /mnt/c/Ruhaan model train/Git folderr/reform/models/stage0_model.keras (9.6 MB) and stage0_classes.json
+
+========================================================================
+STAGE 1  (/mnt/c/Ruhaan model train/Git folderr/reform/data/stage1)
+========================================================================
+Found 7065 files belonging to 7 classes.
+Found 1879 files belonging to 7 classes.
+Found 1149 files belonging to 7 classes.
+WARNING:tensorflow:`input_shape` is undefined or non-square, or `rows` is not in [96, 128, 160, 192, 224]. Weights for input shape (224, 224) will be loaded as the default.
+Classes (7): ['keyboard', 'mouse', 'other_plastic', 'printer_casing', 'remote', 'tv_panel', 'unknown']
+Images: train=7065 val=1879 test=1149 | train per class: {'printer_casing': 700, 'keyboard': 696, 'remote': 237, 'other_plastic': 1517, 'unknown': 2555, 'tv_panel': 669, 'mouse': 691}
+Class weights: {'keyboard': 1.45, 'mouse': 1.46, 'other_plastic': 0.67, 'printer_casing': 1.44, 'remote': 4.26, 'tv_panel': 1.51, 'unknown': 0.4}
+Cache mode: train=memory val=memory test=memory
+Saved an augmentation preview: /mnt/c/Ruhaan model train/Git folderr/reform/models/aug_preview_stage1.jpg  (look at it once)
+
+[PHASE 1] top layer, up to 15 epoch(s)
+Epoch 1/15
+111/111 - 12s - loss: 2.3035 - accuracy: 0.1699 - val_loss: 1.5777 - val_accuracy: 0.4369 - lr: 0.0010 - 12s/epoch - 109ms/step
+Epoch 2/15
+111/111 - 7s - loss: 2.0977 - accuracy: 0.2017 - val_loss: 1.4711 - val_accuracy: 0.4976 - lr: 0.0010 - 7s/epoch - 62ms/step
+Epoch 3/15
+111/111 - 7s - loss: 2.0601 - accuracy: 0.2030 - val_loss: 1.3516 - val_accuracy: 0.6009 - lr: 0.0010 - 7s/epoch - 63ms/step
+Epoch 4/15
+111/111 - 7s - loss: 1.9874 - accuracy: 0.2209 - val_loss: 1.2977 - val_accuracy: 0.6179 - lr: 0.0010 - 7s/epoch - 64ms/step
+Epoch 5/15
+111/111 - 7s - loss: 1.9430 - accuracy: 0.2333 - val_loss: 1.3832 - val_accuracy: 0.5764 - lr: 0.0010 - 7s/epoch - 62ms/step
+Epoch 6/15
+
+Epoch 6: ReduceLROnPlateau reducing learning rate to 0.0005000000237487257.
+111/111 - 7s - loss: 1.9158 - accuracy: 0.2324 - val_loss: 1.4460 - val_accuracy: 0.5263 - lr: 0.0010 - 7s/epoch - 63ms/step
+Epoch 7/15
+111/111 - 14s - loss: 1.8575 - accuracy: 0.2408 - val_loss: 1.3859 - val_accuracy: 0.6078 - lr: 5.0000e-04 - 14s/epoch - 127ms/step
+Epoch 8/15
+Restoring model weights from the end of the best epoch: 4.
+
+Epoch 8: ReduceLROnPlateau reducing learning rate to 0.0002500000118743628.
+111/111 - 7s - loss: 1.8363 - accuracy: 0.2553 - val_loss: 1.3687 - val_accuracy: 0.6094 - lr: 5.0000e-04 - 7s/epoch - 63ms/step
+Epoch 8: early stopping
+
+[PHASE 2] fine-tune last 30 layers, up to 10 epoch(s)
+Epoch 1/10
+111/111 - 11s - loss: 2.0293 - accuracy: 0.2723 - val_loss: 1.2953 - val_accuracy: 0.6317 - lr: 1.0000e-05 - 11s/epoch - 98ms/step
+Epoch 2/10
+111/111 - 8s - loss: 1.9630 - accuracy: 0.2561 - val_loss: 1.3041 - val_accuracy: 0.6088 - lr: 1.0000e-05 - 8s/epoch - 69ms/step
+Epoch 3/10
+
+Epoch 3: ReduceLROnPlateau reducing learning rate to 4.999999873689376e-06.
+111/111 - 8s - loss: 1.9388 - accuracy: 0.2361 - val_loss: 1.3052 - val_accuracy: 0.6051 - lr: 1.0000e-05 - 8s/epoch - 69ms/step
+Epoch 4/10
+111/111 - 8s - loss: 1.9288 - accuracy: 0.2372 - val_loss: 1.3171 - val_accuracy: 0.6019 - lr: 5.0000e-06 - 8s/epoch - 69ms/step
+Epoch 5/10
+Restoring model weights from the end of the best epoch: 1.
+
+Epoch 5: ReduceLROnPlateau reducing learning rate to 2.499999936844688e-06.
+111/111 - 8s - loss: 1.9093 - accuracy: 0.2330 - val_loss: 1.3271 - val_accuracy: 0.5977 - lr: 5.0000e-06 - 8s/epoch - 70ms/step
+Epoch 5: early stopping
+
+[VALIDATION] accuracy 63.17%  loss 1.2953
+Saved /mnt/c/Ruhaan model train/Git folderr/reform/models/stage1_model.keras (9.6 MB) and stage1_classes.json
+STAGE 0 TEST RESULTS (1552 images)
+Accuracy: 42.07%
+
+              precision    recall  f1-score   support
+
+         PCB       0.23      0.35      0.28       124
+     battery       0.29      0.59      0.39       125
+glass_screen       0.20      0.50      0.29       101
+       metal       0.28      0.64      0.39       121
+     plastic       0.89      0.36      0.52       865
+     unknown       0.43      0.42      0.43       216
+
+    accuracy                           0.42      1552
+   macro avg       0.39      0.48      0.38      1552
+weighted avg       0.63      0.42      0.45      1552
+
+Confusion matrix (rows = true, columns = predicted):
+classes: PCB, battery, glass_screen, metal, plastic, unknown
+   44    13     8    19    13    27   <- PCB
+   12    74     8    26     2     3   <- battery
+    8     7    51    22     4     9   <- glass_screen
+    6     6    23    78     3     5   <- metal
+  100   126   142   107   315    75   <- plastic
+   25    32    22    31    15    91   <- unknown
+
+Most common mistakes (count: true -> predicted):
+  142: plastic -> glass_screen
+  126: plastic -> battery
+  107: plastic -> metal
+  100: plastic -> PCB
+  75: plastic -> unknown
+
+STAGE 1 TEST RESULTS (1149 images)
+Accuracy: 65.19%
+
+                precision    recall  f1-score   support
+
+      keyboard       0.61      0.59      0.60       123
+         mouse       0.55      0.61      0.58       116
+ other_plastic       0.56      0.76      0.64       250
+printer_casing       0.77      0.82      0.80       130
+        remote       0.72      0.85      0.78        52
+      tv_panel       0.65      0.43      0.52       119
+       unknown       0.75      0.59      0.66       359
+
+      accuracy                           0.65      1149
+     macro avg       0.66      0.67      0.65      1149
+  weighted avg       0.67      0.65      0.65      1149
+
+Confusion matrix (rows = true, columns = predicted):
+classes: keyboard, mouse, other_plastic, printer_casing, remote, tv_panel, unknown
+   73     7     7     7     3     8    18   <- keyboard
+    7    71    22     1     0     5    10   <- mouse
+    9     8   190    12     0     7    24   <- other_plastic
+    6     0    15   107     0     1     1   <- printer_casing
+    1     1     2     1    44     0     3   <- remote
+   16    14    23     0     1    51    14   <- tv_panel
+    7    28    81    11    13     6   213   <- unknown
+
+Most common mistakes (count: true -> predicted):
+  81: unknown -> other_plastic
+  28: unknown -> mouse
+  24: other_plastic -> unknown
+  23: tv_panel -> other_plastic
+  22: mouse -> other_plastic
+
+Saved training_summary.json and test reports in /mnt/c/Ruhaan model train/Git folderr/reform/models
+REAL RUN finished. Files are in /mnt/c/Ruhaan model train/Git folderr/reform/models
+
+Stage 0: val acc 42.3% | test acc 42.1% | 8941 train images | 4.5 min
+Stage 1: val acc 63.2% | test acc 65.2% | 7065 train images | 2.0 min
+
+Next: try the models in the app and hand the results back (workflow document, Parts 9 and 10).
+Files to hand back: models/stage*_model.keras, models/stage*_classes.json, models/stage*_test_report.txt, models/training_summary.json. Old models are in models_backup/.
+
+
+========================================================================
+STAGE 0 RETRAINING LOG (OPTION 2: TUNED SQRT CLASS WEIGHTS)
+========================================================================
+Python 3.11.18 | TensorFlow 2.15.1 | Keras 2.15.0
+Repo root : /mnt/c/Ruhaan model train/Git folderr/reform
+GPU       : ['/physical_device:GPU:0']  compute capability: (12, 0)
+CPU cores : 16 | RAM: 8 GB
+Batch size: 64 | mixed precision: True | cache: auto
+Mode      : REAL RUN (replaces models/stage0_model.keras)
+
+Classes (6): ['PCB', 'battery', 'glass_screen', 'metal', 'plastic', 'unknown']
+Images: train=8941 val=2281 test=1552 | train per class: {'plastic': 4860, 'unknown': 1399, 'battery': 744, 'PCB': 700, 'glass_screen': 601, 'metal': 637}
+Class weights (normalized sqrt): {'PCB': 1.16, 'battery': 1.12, 'glass_screen': 1.25, 'metal': 1.21, 'plastic': 0.44, 'unknown': 0.82}
+Cache mode: train=memory val=memory test=memory
+
+[PHASE 1] top layer, up to 15 epoch(s)
+Epoch 1/15: loss: 1.4880 - accuracy: 0.3220 - val_loss: 1.3005 - val_accuracy: 0.5712 - lr: 0.0010 (19s/epoch - 137ms/step)
+Epoch 2/15: loss: 1.3551 - accuracy: 0.3695 - val_loss: 1.2711 - val_accuracy: 0.6041 - lr: 0.0010 (11s/epoch - 79ms/step)
+Epoch 3/15: loss: 1.3102 - accuracy: 0.3835 - val_loss: 1.2641 - val_accuracy: 0.6059 - lr: 0.0010 (12s/epoch - 84ms/step)
+Epoch 4/15: loss: 1.2762 - accuracy: 0.4009 - val_loss: 1.3074 - val_accuracy: 0.6181 - lr: 0.0010 (18s/epoch - 127ms/step)
+Epoch 5/15: loss: 1.2508 - accuracy: 0.4134 - val_loss: 1.3630 - val_accuracy: 0.5647 - lr: 0.0010 (11s/epoch - 79ms/step)
+Epoch 6/15: loss: 1.2309 - accuracy: 0.4283 - val_loss: 1.2490 - val_accuracy: 0.6361 - lr: 0.0010 (10s/epoch - 74ms/step)
+Epoch 7/15: loss: 1.2211 - accuracy: 0.4264 - val_loss: 1.2532 - val_accuracy: 0.6107 - lr: 0.0010 (18s/epoch - 125ms/step)
+Epoch 8/15: loss: 1.2202 - accuracy: 0.4378 - val_loss: 1.2984 - val_accuracy: 0.6234 - lr: 0.0010 (17s/epoch - 125ms/step)
+Epoch 9/15: ReduceLROnPlateau reducing learning rate to 0.0005. loss: 1.2103 - val_loss: 1.2936 (12s/epoch - 85ms/step)
+Epoch 10/15: loss: 1.1860 - accuracy: 0.4492 - val_loss: 1.2207 - val_accuracy: 0.6616 - lr: 5.0000e-04 (18s/epoch - 125ms/step)
+Epoch 11/15: loss: 1.1848 - accuracy: 0.4517 - val_loss: 1.2189 - val_accuracy: 0.6541 - lr: 5.0000e-04 (12s/epoch - 84ms/step)
+Epoch 12/15: loss: 1.1850 - accuracy: 0.4523 - val_loss: 1.2328 - val_accuracy: 0.6418 - lr: 5.0000e-04 (12s/epoch - 84ms/step)
+Epoch 13/15: loss: 1.1849 - accuracy: 0.4552 - val_loss: 1.2464 - val_accuracy: 0.6629 - lr: 5.0000e-04 (12s/epoch - 85ms/step)
+Epoch 14/15: ReduceLROnPlateau reducing learning rate to 0.00025. loss: 1.1773 - val_loss: 1.2473 (10s/epoch - 74ms/step)
+Epoch 15/15: loss: 1.1680 - accuracy: 0.4683 - val_loss: 1.2082 - val_accuracy: 0.6572 - lr: 2.5000e-04 (18s/epoch - 126ms/step)
+
+[PHASE 2] fine-tune last 30 layers, up to 10 epoch(s)
+Epoch 1/10: loss: 1.2356 - accuracy: 0.4029 - val_loss: 1.1698 - val_accuracy: 0.6611 - lr: 1.0000e-05 (34s/epoch - 243ms/step)
+Epoch 2/10: loss: 1.2041 - accuracy: 0.4385 - val_loss: 1.1543 - val_accuracy: 0.6651 - lr: 1.0000e-05 (31s/epoch - 222ms/step)
+Epoch 3/10: loss: 1.1991 - accuracy: 0.4400 - val_loss: 1.1424 - val_accuracy: 0.6690 - lr: 1.0000e-05 (9s/epoch - 67ms/step)
+Epoch 4/10: loss: 1.1797 - accuracy: 0.4487 - val_loss: 1.1431 - val_accuracy: 0.6738 - lr: 1.0000e-05 (9s/epoch - 66ms/step)
+Epoch 5/10: loss: 1.1684 - accuracy: 0.4544 - val_loss: 1.1361 - val_accuracy: 0.6791 - lr: 1.0000e-05 (9s/epoch - 67ms/step)
+Epoch 6/10: loss: 1.1676 - accuracy: 0.4581 - val_loss: 1.1330 - val_accuracy: 0.6826 - lr: 1.0000e-05 (31s/epoch - 222ms/step)
+Epoch 7/10: loss: 1.1608 - accuracy: 0.4644 - val_loss: 1.1332 - val_accuracy: 0.6874 - lr: 1.0000e-05 (31s/epoch - 221ms/step)
+Epoch 8/10: loss: 1.1510 - accuracy: 0.4786 - val_loss: 1.1319 - val_accuracy: 0.6861 - lr: 1.0000e-05 (9s/epoch - 67ms/step)
+Epoch 9/10: loss: 1.1434 - accuracy: 0.4728 - val_loss: 1.1270 - val_accuracy: 0.6896 - lr: 1.0000e-05 (31s/epoch - 222ms/step)
+Epoch 10/10: loss: 1.1382 - accuracy: 0.4812 - val_loss: 1.1356 - val_accuracy: 0.6909 - lr: 1.0000e-05 (9s/epoch - 67ms/step)
+
+[VALIDATION] accuracy 69.09%  loss 1.1356
+Saved models/stage0_model.keras (9.6 MB) and stage0_classes.json
+
+STAGE 0 TEST RESULTS (1552 images)
+Accuracy: 66.49% (Notebook) / 66.24% (eval_test.py)
+
+              precision    recall  f1-score   support
+
+         PCB       0.70      0.32      0.44       124
+     battery       0.61      0.32      0.42       125
+glass_screen       0.46      0.26      0.33       101
+       metal       0.77      0.28      0.41       121
+     plastic       0.68      0.93      0.79       865
+     unknown       0.56      0.37      0.45       216
+
+    accuracy                           0.66      1552
+   macro avg       0.63      0.41      0.47      1552
+weighted avg       0.65      0.66      0.62      1552
+
+Confusion matrix (rows = true, columns = predicted):
+classes: PCB, battery, glass_screen, metal, plastic, unknown
+   40     1     1     0    62    20   <- PCB
+    2    40     3     0    78     2   <- battery
+    2     2    26     2    64     5   <- glass_screen
+    2     5     5    34    63    12   <- metal
+    3    10    15     5   808    24   <- plastic
+    8     8     7     3   110    80   <- unknown
+
+Stage 0 Retraining completed in 7.3 min.

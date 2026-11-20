@@ -1,0 +1,31 @@
+STAGE 0 TEST RESULTS (1552 images)
+Accuracy: 42.07%
+
+              precision    recall  f1-score   support
+
+         PCB       0.23      0.35      0.28       124
+     battery       0.29      0.59      0.39       125
+glass_screen       0.20      0.50      0.29       101
+       metal       0.28      0.64      0.39       121
+     plastic       0.89      0.36      0.52       865
+     unknown       0.43      0.42      0.43       216
+
+    accuracy                           0.42      1552
+   macro avg       0.39      0.48      0.38      1552
+weighted avg       0.63      0.42      0.45      1552
+
+Confusion matrix (rows = true, columns = predicted):
+classes: PCB, battery, glass_screen, metal, plastic, unknown
+   44    13     8    19    13    27   <- PCB
+   12    74     8    26     2     3   <- battery
+    8     7    51    22     4     9   <- glass_screen
+    6     6    23    78     3     5   <- metal
+  100   126   142   107   315    75   <- plastic
+   25    32    22    31    15    91   <- unknown
+
+Most common mistakes (count: true -> predicted):
+  142: plastic -> glass_screen
+  126: plastic -> battery
+  107: plastic -> metal
+  100: plastic -> PCB
+  75: plastic -> unknown
