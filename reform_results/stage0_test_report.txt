@@ -1,0 +1,32 @@
+STAGE 0 TEST RESULTS (1552 images)
+Model: stage0_model.keras
+Accuracy: 66.24%
+
+              precision    recall  f1-score   support
+
+         PCB       0.70      0.32      0.44       124
+     battery       0.61      0.32      0.42       125
+glass_screen       0.46      0.26      0.33       101
+       metal       0.77      0.28      0.41       121
+     plastic       0.68      0.93      0.79       865
+     unknown       0.56      0.37      0.45       216
+
+    accuracy                           0.66      1552
+   macro avg       0.63      0.41      0.47      1552
+weighted avg       0.65      0.66      0.62      1552
+
+Confusion matrix (rows = true, columns = predicted):
+classes: PCB, battery, glass_screen, metal, plastic, unknown
+   40     1     1     0    62    20   <- PCB
+    2    40     3     0    78     2   <- battery
+    2     2    26     2    64     5   <- glass_screen
+    2     5     5    34    63    12   <- metal
+    3    10    15     5   808    24   <- plastic
+    8     8     7     3   110    80   <- unknown
+
+Most common mistakes (count: true -> predicted):
+  110: unknown -> plastic
+  78: battery -> plastic
+  64: glass_screen -> plastic
+  63: metal -> plastic
+  62: PCB -> plastic

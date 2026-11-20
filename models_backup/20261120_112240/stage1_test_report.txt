@@ -1,0 +1,33 @@
+STAGE 1 TEST RESULTS (1149 images)
+Accuracy: 65.19%
+
+                precision    recall  f1-score   support
+
+      keyboard       0.61      0.59      0.60       123
+         mouse       0.55      0.61      0.58       116
+ other_plastic       0.56      0.76      0.64       250
+printer_casing       0.77      0.82      0.80       130
+        remote       0.72      0.85      0.78        52
+      tv_panel       0.65      0.43      0.52       119
+       unknown       0.75      0.59      0.66       359
+
+      accuracy                           0.65      1149
+     macro avg       0.66      0.67      0.65      1149
+  weighted avg       0.67      0.65      0.65      1149
+
+Confusion matrix (rows = true, columns = predicted):
+classes: keyboard, mouse, other_plastic, printer_casing, remote, tv_panel, unknown
+   73     7     7     7     3     8    18   <- keyboard
+    7    71    22     1     0     5    10   <- mouse
+    9     8   190    12     0     7    24   <- other_plastic
+    6     0    15   107     0     1     1   <- printer_casing
+    1     1     2     1    44     0     3   <- remote
+   16    14    23     0     1    51    14   <- tv_panel
+    7    28    81    11    13     6   213   <- unknown
+
+Most common mistakes (count: true -> predicted):
+  81: unknown -> other_plastic
+  28: unknown -> mouse
+  24: other_plastic -> unknown
+  23: tv_panel -> other_plastic
+  22: mouse -> other_plastic

@@ -1,0 +1,44 @@
+{
+  "dry_run": false,
+  "tensorflow": "2.15.1",
+  "gpu": [
+    "/physical_device:GPU:0"
+  ],
+  "mixed_precision": true,
+  "batch_size": 64,
+  "stages": {
+    "0": {
+      "test_accuracy": 0.4207474226804124,
+      "val_accuracy": 0.4230600595474243,
+      "classes": [
+        "PCB",
+        "battery",
+        "glass_screen",
+        "metal",
+        "plastic",
+        "unknown"
+      ],
+      "n_train": 8941,
+      "n_val": 2281,
+      "n_test": 1552,
+      "minutes": 4.5
+    },
+    "1": {
+      "test_accuracy": 0.6518711923411662,
+      "val_accuracy": 0.6317189931869507,
+      "classes": [
+        "keyboard",
+        "mouse",
+        "other_plastic",
+        "printer_casing",
+        "remote",
+        "tv_panel",
+        "unknown"
+      ],
+      "n_train": 7065,
+      "n_val": 1879,
+      "n_test": 1149,
+      "minutes": 2.0
+    }
+  }
+}
